@@ -1,0 +1,15 @@
+.carousel__controls { display: flex; gap: 10px; justify-content: flex-end; margin-bottom: 16px; }
+.carousel__controls button { width: 44px; height: 44px; border-radius: 50%; border: 1px solid var(--line); background: var(--surface); color: var(--text); font-size: 1.1rem; cursor: pointer; }
+.carousel__controls button:hover { background: var(--surface-2); }
+.carousel { display: flex; gap: 24px; overflow-x: auto; scroll-snap-type: x mandatory; padding: 12px 24px 40px; margin: 0 -24px; scrollbar-width: none; perspective: 1000px; }
+.carousel::-webkit-scrollbar { display: none; }
+.pcard { flex: 0 0 min(84vw, 340px); scroll-snap-align: start; background: var(--surface); border-radius: var(--radius); overflow: hidden; box-shadow: var(--shadow), inset 0 0 0 1px var(--line); display: flex; flex-direction: column; }
+.cover { position: relative; aspect-ratio: 16 / 10; overflow: hidden; display: grid; place-items: center; }
+.cover__orb { position: absolute; width: 70%; aspect-ratio: 1; border-radius: 50%; right: -15%; top: -25%; background: radial-gradient(circle at 30% 30%, rgba(255,255,255,.55), rgba(255,255,255,0) 70%); }
+.cover__mark { position: relative; font-size: 3.4rem; font-weight: 700; letter-spacing: -0.04em; color: rgba(255,255,255,.95); text-shadow: 0 6px 24px rgba(0,0,0,.25); }
+.pcard__body { padding: 22px; display: flex; flex-direction: column; gap: 10px; flex: 1; }
+.pcard__metric { margin: 0; color: var(--accent); font-weight: 600; font-size: 0.85rem; }
+.pcard__title { margin: 0; font-size: 1.25rem; letter-spacing: -0.02em; line-height: 1.2; }
+.pcard__summary { margin: 0; color: var(--muted); font-size: 0.95rem; flex: 1; }
+.pcard__link { color: var(--accent); text-decoration: none; font-weight: 500; margin-top: 6px; }
+.pcard__link:hover { text-decoration: underline; }

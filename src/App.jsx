@@ -4,6 +4,7 @@ import Footer from "./components/Footer";
 import Hero from "./components/Hero/Hero";
 import Education from "./components/Education/Education";
 import Experience from "./components/Experience/Experience";
+import Projects from "./components/Projects/Projects";
 
 export default function App() {
   return (
@@ -14,6 +15,7 @@ export default function App() {
         <Hero />
         <Education />
         <Experience />
+        <Projects />
       </main>
       <Footer />
     </MotionConfig>
