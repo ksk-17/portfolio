@@ -1,9 +1,9 @@
 import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
-import { vi, describe, it, expect } from "vitest";
+import { vi, describe, it, expect, beforeEach } from "vitest";
 import { education } from "../../data/education";
 
-vi.mock("cobe", () => ({ default: vi.fn(() => ({ destroy: vi.fn() })) }));
+vi.mock("cobe", () => ({ default: vi.fn(() => ({ update: vi.fn(), destroy: vi.fn() })) }));
 
 import Education from "./Education";
 import Globe from "./Globe";
@@ -21,6 +21,9 @@ describe("Education without WebGL", () => {
 });
 
 describe("Globe", () => {
+  beforeEach(() => {
+    vi.spyOn(window, "requestAnimationFrame").mockReturnValue(1);
+  });
   it("renders one pin button per school and reports selection", async () => {
     const onSelect = vi.fn();
     const user = userEvent.setup();

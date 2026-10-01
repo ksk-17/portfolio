@@ -3,10 +3,10 @@
 .globe { position: relative; width: min(100%, 520px); aspect-ratio: 1; margin: 0 auto; touch-action: pan-y; cursor: grab; }
 .globe:active { cursor: grabbing; }
 .globe__canvas { width: 100%; height: 100%; display: block; }
-.globe__pin { position: absolute; top: 0; left: 0; display: flex; align-items: center; gap: 8px; background: none; border: 0; padding: 6px; cursor: pointer; color: var(--text); font: inherit; transition: opacity 0.2s; }
+.globe__pin { position: absolute; top: 0; left: 0; width: 28px; height: 28px; display: grid; place-items: center; background: none; border: 0; padding: 0; cursor: pointer; color: var(--text); font: inherit; transition: opacity 0.2s; }
 .globe__pin-dot { width: 14px; height: 14px; border-radius: 50%; background: var(--accent); box-shadow: 0 0 0 4px color-mix(in srgb, var(--accent) 30%, transparent); }
 .globe__pin[data-active="true"] .globe__pin-dot { animation: pulse 1.8s infinite; }
-.globe__pin-label { font-size: 0.8rem; font-weight: 600; background: var(--surface); padding: 3px 9px; border-radius: 999px; box-shadow: var(--shadow); white-space: nowrap; }
+.globe__pin-label { position: absolute; left: calc(100% + 4px); top: 50%; transform: translateY(-50%); font-size: 0.8rem; font-weight: 600; background: var(--surface); padding: 3px 9px; border-radius: 999px; box-shadow: var(--shadow); white-space: nowrap; }
 @keyframes pulse { 50% { box-shadow: 0 0 0 10px color-mix(in srgb, var(--accent) 0%, transparent); } }
 
 .edu__tabs { display: inline-flex; background: var(--surface-2); padding: 4px; border-radius: 999px; margin-bottom: 20px; }

@@ -42,32 +42,46 @@ export default function Globe({ schools, selectedId, onSelect }) {
         arcColor: [0, 0.44, 0.89],
         arcWidth: 0.5,
         arcHeight: 0.3,
-        onRender: (state) => {
-          if (!drag.current) {
-            const c = current.current;
-            const t = target.current;
-            c.phi += (t.phi - c.phi) * 0.08;
-            c.theta += (t.theta - c.theta) * 0.08;
-          }
-          state.phi = current.current.phi;
-          state.theta = current.current.theta;
-          const R = size * GLOBE_RADIUS_RATIO;
-          const half = size / 2;
-          schools.forEach((s) => {
-            const el = pinRefs.current[s.id];
-            if (!el) return;
-            const p = projectPin(s.location.lat, s.location.lng, state.phi, state.theta);
-            el.style.transform = `translate(${half + p.x * R}px, ${half - p.y * R}px) translate(-50%, -50%)`;
-            el.style.opacity = p.visible ? 1 : 0;
-            el.style.pointerEvents = p.visible ? "auto" : "none";
-          });
-        },
       });
     } catch {
       setFailed(true);
       return undefined;
     }
-    return () => globe.destroy();
+
+    let raf;
+    let visible = true;
+    const io = new IntersectionObserver(([e]) => {
+      visible = e.isIntersecting;
+    });
+    io.observe(canvas);
+    const R = size * GLOBE_RADIUS_RATIO;
+    const half = size / 2;
+    const tick = () => {
+      raf = requestAnimationFrame(tick);
+      if (!visible) return;
+      if (!drag.current) {
+        const c = current.current;
+        const t = target.current;
+        c.phi += (t.phi - c.phi) * 0.08;
+        c.theta += (t.theta - c.theta) * 0.08;
+      }
+      const { phi, theta } = current.current;
+      globe.update({ phi, theta });
+      schools.forEach((s) => {
+        const el = pinRefs.current[s.id];
+        if (!el) return;
+        const p = projectPin(s.location.lat, s.location.lng, phi, theta);
+        el.style.transform = `translate(${half + p.x * R}px, ${half - p.y * R}px) translate(-50%, -50%)`;
+        el.style.opacity = p.visible ? 1 : 0;
+        el.style.pointerEvents = p.visible ? "auto" : "none";
+      });
+    };
+    raf = requestAnimationFrame(tick);
+    return () => {
+      cancelAnimationFrame(raf);
+      io.disconnect();
+      globe.destroy();
+    };
   }, [schools]);
 
   function down(e) {
