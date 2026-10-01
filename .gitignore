@@ -3,3 +3,5 @@
 
 # build folder
 build/
+dist
+.superpowers
