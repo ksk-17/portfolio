@@ -1,6 +1,7 @@
 import { MotionConfig } from "motion/react";
 import Nav from "./components/Nav/Nav";
 import Footer from "./components/Footer";
+import Hero from "./components/Hero/Hero";
 
 export default function App() {
   return (
@@ -8,7 +9,7 @@ export default function App() {
       <a className="skip-link" href="#education">Skip to content</a>
       <Nav />
       <main>
-        <h1 id="top">Sumanth Kumar Kotagudem</h1>
+        <Hero />
       </main>
       <Footer />
     </MotionConfig>
