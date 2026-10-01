@@ -2,27 +2,38 @@ import { useEffect, useRef, useState } from "react";
 import createGlobe from "cobe";
 import { focusAngles, projectPin, GLOBE_RADIUS_RATIO } from "./globeMath";
 
-export default function Globe({ schools, selectedId, onSelect }) {
+export default function Globe({ schools, selectedId, focusKey = 0, onSelect, onUnavailable }) {
   const canvasRef = useRef(null);
   const pinRefs = useRef({});
+  const sizeRef = useRef(560);
   const current = useRef({ phi: 0, theta: 0.3 });
   const target = useRef({ phi: 0, theta: 0.3 });
   const drag = useRef(null);
   const [failed, setFailed] = useState(false);
 
+  // Re-centre whenever a school is chosen, even if it is already the selected one.
   useEffect(() => {
     const s = schools.find((x) => x.id === selectedId);
     if (s) target.current = focusAngles(s.location.lat, s.location.lng, current.current.phi);
-  }, [selectedId, schools]);
+  }, [selectedId, focusKey, schools]);
 
   useEffect(() => {
     const canvas = canvasRef.current;
     if (!canvas) return undefined;
-    const size = canvas.offsetWidth || 560;
     const dpr = Math.min(window.devicePixelRatio || 1, 2);
     const dark = window.matchMedia("(prefers-color-scheme: dark)").matches;
     const locations = schools.map((s) => [s.location.lat, s.location.lng]);
+    const measure = () => {
+      sizeRef.current = canvas.offsetWidth || 560;
+      return sizeRef.current;
+    };
+    const size = measure();
+
     let globe;
+    const fail = () => {
+      setFailed(true);
+      onUnavailable?.();
+    };
     try {
       globe = createGlobe(canvas, {
         devicePixelRatio: dpr,
@@ -43,10 +54,21 @@ export default function Globe({ schools, selectedId, onSelect }) {
         arcWidth: 0.5,
         arcHeight: 0.3,
       });
+      // cobe 2.x does not throw without WebGL; it hands back no-op stubs. Verify the context ourselves.
+      const gl = canvas.getContext("webgl") || canvas.getContext("experimental-webgl");
+      if (!gl || gl.isContextLost?.()) throw new Error("WebGL context unavailable");
     } catch {
-      setFailed(true);
+      globe?.destroy?.();
+      fail();
       return undefined;
     }
+
+    canvas.addEventListener("webglcontextlost", fail);
+    const ro = new ResizeObserver(() => {
+      const s = measure();
+      globe.update({ width: s * dpr, height: s * dpr });
+    });
+    ro.observe(canvas);
 
     let raf;
     let visible = true;
@@ -54,8 +76,6 @@ export default function Globe({ schools, selectedId, onSelect }) {
       visible = e.isIntersecting;
     });
     io.observe(canvas);
-    const R = size * GLOBE_RADIUS_RATIO;
-    const half = size / 2;
     const tick = () => {
       raf = requestAnimationFrame(tick);
       if (!visible) return;
@@ -67,6 +87,8 @@ export default function Globe({ schools, selectedId, onSelect }) {
       }
       const { phi, theta } = current.current;
       globe.update({ phi, theta });
+      const half = sizeRef.current / 2;
+      const R = sizeRef.current * GLOBE_RADIUS_RATIO;
       schools.forEach((s) => {
         const el = pinRefs.current[s.id];
         if (!el) return;
@@ -79,10 +101,12 @@ export default function Globe({ schools, selectedId, onSelect }) {
     raf = requestAnimationFrame(tick);
     return () => {
       cancelAnimationFrame(raf);
+      canvas.removeEventListener("webglcontextlost", fail);
+      ro.disconnect();
       io.disconnect();
       globe.destroy();
     };
-  }, [schools]);
+  }, [schools]); // eslint-disable-line react-hooks/exhaustive-deps
 
   function down(e) {
     drag.current = { x: e.clientX };
