@@ -1,0 +1,26 @@
+.edu { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: center; }
+.edu:not(:has(.edu__globe)) { grid-template-columns: 1fr; max-width: 720px; }
+.globe { position: relative; width: min(100%, 520px); aspect-ratio: 1; margin: 0 auto; touch-action: pan-y; cursor: grab; }
+.globe:active { cursor: grabbing; }
+.globe__canvas { width: 100%; height: 100%; display: block; }
+.globe__pin { position: absolute; top: 0; left: 0; display: flex; align-items: center; gap: 8px; background: none; border: 0; padding: 6px; cursor: pointer; color: var(--text); font: inherit; transition: opacity 0.2s; }
+.globe__pin-dot { width: 14px; height: 14px; border-radius: 50%; background: var(--accent); box-shadow: 0 0 0 4px color-mix(in srgb, var(--accent) 30%, transparent); }
+.globe__pin[data-active="true"] .globe__pin-dot { animation: pulse 1.8s infinite; }
+.globe__pin-label { font-size: 0.8rem; font-weight: 600; background: var(--surface); padding: 3px 9px; border-radius: 999px; box-shadow: var(--shadow); white-space: nowrap; }
+@keyframes pulse { 50% { box-shadow: 0 0 0 10px color-mix(in srgb, var(--accent) 0%, transparent); } }
+
+.edu__tabs { display: inline-flex; background: var(--surface-2); padding: 4px; border-radius: 999px; margin-bottom: 20px; }
+.edu__tabs button { border: 0; background: none; color: var(--muted); font: inherit; font-weight: 500; padding: 8px 18px; border-radius: 999px; cursor: pointer; }
+.edu__tabs button[aria-selected="true"] { background: var(--surface); color: var(--text); box-shadow: 0 1px 6px rgba(0,0,0,.12); }
+
+.school { background: var(--surface); border-radius: var(--radius); padding: 28px; box-shadow: var(--shadow), inset 0 0 0 1px var(--line); }
+.school__head { display: flex; gap: 16px; align-items: center; margin-bottom: 20px; }
+.school__degree { margin: 0 0 4px; font-size: 1.35rem; letter-spacing: -0.02em; }
+.school__meta { margin: 0; color: var(--muted); font-size: 0.92rem; }
+.school__highlight h4 { margin: 16px 0 4px; font-size: 1rem; }
+.school__highlight p { margin: 0; color: var(--muted); }
+.school__label { margin: 22px 0 10px; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.08em; color: var(--muted); }
+.chips { display: flex; flex-wrap: wrap; gap: 8px; list-style: none; margin: 0; padding: 0; }
+.chips li { background: var(--surface-2); border-radius: 999px; padding: 5px 12px; font-size: 0.82rem; }
+
+@media (max-width: 860px) { .edu { grid-template-columns: 1fr; gap: 24px; } .globe { width: min(100%, 380px); } }
