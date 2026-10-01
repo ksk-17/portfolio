@@ -1,0 +1,13 @@
+.stack { display: grid; gap: 28px; }
+.stack__card {
+  position: sticky; top: calc(var(--nav-h) + 24px + var(--i) * 18px);
+  background: var(--surface); border-radius: var(--radius); padding: clamp(22px, 4vw, 36px);
+  box-shadow: var(--shadow), inset 0 0 0 1px var(--line);
+}
+.stack__head { display: flex; gap: 16px; align-items: center; margin-bottom: 14px; }
+.stack__role { margin: 0; font-size: clamp(1.25rem, 2.6vw, 1.7rem); letter-spacing: -0.02em; }
+.stack__meta { margin: 2px 0 0; color: var(--muted); }
+.stack__list { margin: 0; padding-left: 1.2em; display: grid; gap: 8px; color: var(--text); max-width: 760px; }
+.stack__more { margin-top: 16px; background: none; border: 0; color: var(--accent); font: inherit; font-weight: 500; cursor: pointer; padding: 4px 0; }
+.stack__card[data-placeholder="true"] { opacity: 0.6; border: 1px dashed var(--line); }
+@media (max-width: 720px) { .stack__card { position: relative; top: auto; } }

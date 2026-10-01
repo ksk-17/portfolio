@@ -3,6 +3,7 @@ import Nav from "./components/Nav/Nav";
 import Footer from "./components/Footer";
 import Hero from "./components/Hero/Hero";
 import Education from "./components/Education/Education";
+import Experience from "./components/Experience/Experience";
 
 export default function App() {
   return (
@@ -12,6 +13,7 @@ export default function App() {
       <main>
         <Hero />
         <Education />
+        <Experience />
       </main>
       <Footer />
     </MotionConfig>
