@@ -1,0 +1,51 @@
+export const experience = [
+  {
+    id: "skill-lab",
+    role: "Research Assistant",
+    company: "SKILL Lab, San José State University",
+    dates: "Present",
+    logo: "logos/sjsu.svg",
+    summary: [
+      "Fusing Knowledge Graphs into Large Language Models for biomedical reasoning, under Prof. Jelena Gligorijevic.",
+    ],
+    details: [],
+  },
+  {
+    id: "sap",
+    role: "Role details coming soon",
+    company: "SAP",
+    dates: "—",
+    logo: "logos/sap.svg",
+    summary: ["Details will be added here."],
+    details: [],
+    placeholder: true,
+  },
+  {
+    id: "jpmc-swe",
+    role: "Software Engineer",
+    company: "JPMorgan Chase",
+    dates: "Jun 2023 – Dec 2024",
+    logo: "logos/jpmc.svg",
+    summary: [
+      "Built core modules of the JADE Catalog, an enterprise data-governance platform covering 40k+ applications and 200k+ data sources.",
+      "Shipped Spring Boot microservices on AWS/Kubernetes with PostgreSQL, Kafka and Terraform; kept data-sync pipelines at 99.9% availability.",
+      "Added Elasticsearch-backed search that made locating compliance artifacts 10x faster.",
+    ],
+    details: [
+      "Engineered dynamic workflows automating application and data-resource certification against evolving compliance frameworks.",
+      "Refactored legacy monolithic services into modular microservices for faster deployments, better fault isolation and independent scaling.",
+      "Designed a cross-application notification framework giving real-time visibility into compliance status, registration progress and pipeline failures.",
+      "Supported React.js frontend development during critical feature sprints.",
+      "Acted as liaison during production incidents and major releases, leading root-cause analysis and hotfixes; ran demos and knowledge transfers for leadership and end users.",
+    ],
+  },
+  {
+    id: "jpmc-intern",
+    role: "Software Engineer Intern",
+    company: "JPMorgan Chase",
+    dates: "Jan 2023 – May 2024",
+    logo: "logos/jpmc.svg",
+    summary: ["Internship preceding the full-time Software Engineer role."],
+    details: [],
+  },
+];
