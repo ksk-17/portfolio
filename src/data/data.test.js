@@ -46,4 +46,8 @@ describe("content data", () => {
       if (e.logo !== null) expect(existsSync(resolve("public", e.logo)), e.logo).toBe(true);
     });
   });
+  it("uses the avatar cutout, and the file exists", () => {
+    expect(profile.headshot).toBe("avatar.webp");
+    expect(existsSync(resolve("public", profile.headshot))).toBe(true);
+  });
 });

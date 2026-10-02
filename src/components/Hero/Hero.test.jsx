@@ -13,7 +13,7 @@ describe("Hero", () => {
   it("renders the headshot with alt text and a BASE_URL-aware src", () => {
     render(<Hero />);
     const img = screen.getByAltText(new RegExp(profile.name));
-    expect(img.getAttribute("src")).toBe(`${import.meta.env.BASE_URL}image.png`);
+    expect(img.getAttribute("src")).toBe(`${import.meta.env.BASE_URL}avatar.webp`);
   });
   it("has no decorative 3D layer", () => {
     const { container } = render(<Hero />);

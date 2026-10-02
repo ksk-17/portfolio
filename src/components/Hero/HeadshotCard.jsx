@@ -21,7 +21,7 @@ export default function HeadshotCard({ src, alt }) {
     <div className="headshot" onPointerMove={onMove} onPointerLeave={onLeave}>
       <motion.div className="headshot__card" style={{ rotateX, rotateY, transformPerspective: 900 }}>
         <div className="headshot__glow" aria-hidden="true" />
-        <motion.img className="headshot__img" src={src} alt={alt} style={{ x: imgX, y: imgY }} width="420" height="420" fetchPriority="high" />
+        <motion.img className="headshot__img" src={src} alt={alt} style={{ x: imgX, y: imgY }} width="900" height="1083" fetchPriority="high" />
       </motion.div>
     </div>
   );
