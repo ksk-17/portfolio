@@ -10,7 +10,7 @@ const links = [
   { id: "projects", label: "Projects" },
   { id: "contact", label: "Contact" },
 ];
-const observed = ["education", "experience", "projects"];
+const observed = ["education", "experience", "projects", "contact"];
 
 export default function Nav() {
   const [open, setOpen] = useState(false);

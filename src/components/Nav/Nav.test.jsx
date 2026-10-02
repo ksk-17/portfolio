@@ -34,4 +34,18 @@ describe("Nav", () => {
     expect(document.documentElement.dataset.theme).toBe("dark");
     expect(screen.getByRole("button", { name: /switch to light mode/i })).toBeInTheDocument();
   });
+  it("watches the Contact section too, so it highlights when it is in view", () => {
+    const observed = [];
+    globalThis.IntersectionObserver = class {
+      observe(el) { observed.push(el.id); }
+      unobserve() {} disconnect() {}
+    };
+    render(
+      <ThemeProvider>
+        <Nav />
+        {["education", "experience", "projects", "contact"].map((id) => <div key={id} id={id} />)}
+      </ThemeProvider>
+    );
+    expect(observed).toEqual(["education", "experience", "projects", "contact"]);
+  });
 });

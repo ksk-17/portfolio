@@ -19,4 +19,8 @@ describe("Hero", () => {
     const { container } = render(<Hero />);
     expect(container.querySelector("canvas, .backdrop3d")).toBeNull();
   });
+  it("no longer holds the contact icons (they live in the final Contact section)", () => {
+    render(<Hero />);
+    expect(screen.queryByRole("link", { name: /github|linkedin|email/i })).toBeNull();
+  });
 });

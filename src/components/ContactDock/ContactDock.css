@@ -1,4 +1,4 @@
-.dock { display: flex; flex-wrap: wrap; gap: 20px; scroll-margin-top: calc(var(--nav-h) + 40px); }
+.dock { display: flex; flex-wrap: wrap; gap: 20px; }
 .icon3d {
   position: relative; display: grid; justify-items: center; gap: 10px; text-decoration: none; color: var(--text);
   transform-style: preserve-3d; -webkit-tap-highlight-color: transparent;

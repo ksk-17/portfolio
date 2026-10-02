@@ -26,7 +26,7 @@ export default function ContactDock() {
   }
 
   return (
-    <div id="contact" className="dock" role="group" aria-label="Contact">
+    <div className="dock" role="group" aria-label="Contact">
       <Icon3D label="Email" href={`mailto:${profile.email}`} tone="#ff5f57" external={false} onClick={onEmail}><MailGlyph /></Icon3D>
       <Icon3D label="LinkedIn" href={profile.links.linkedin} tone="#0a66c2"><LinkedInGlyph /></Icon3D>
       <Icon3D label="GitHub" href={profile.links.github} tone="#24292f"><GitHubGlyph /></Icon3D>

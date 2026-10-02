@@ -6,6 +6,7 @@ import Hero from "./components/Hero/Hero";
 import Education from "./components/Education/Education";
 import Experience from "./components/Experience/Experience";
 import Projects from "./components/Projects/Projects";
+import Contact from "./components/Contact/Contact";
 
 export default function App() {
   return (
@@ -18,6 +19,7 @@ export default function App() {
         <Education />
         <Experience />
         <Projects />
+        <Contact />
       </main>
       <Footer />
     </MotionConfig>
