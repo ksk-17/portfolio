@@ -1,6 +1,8 @@
 import { useEffect, useRef, useState } from "react";
 import createGlobe from "cobe";
 import { useTheme } from "../../theme/ThemeContext";
+import Logo from "../ui/Logo";
+import { asset } from "../../lib/asset";
 import { focusAngles, projectPin, labelSide, GLOBE_RADIUS_RATIO } from "./globeMath";
 
 export default function Globe({ schools, selectedId, focusKey = 0, onSelect, onUnavailable }) {
@@ -24,7 +26,6 @@ export default function Globe({ schools, selectedId, focusKey = 0, onSelect, onU
     if (!canvas) return undefined;
     const dpr = Math.min(window.devicePixelRatio || 1, 2);
     const dark = theme === "dark";
-    const locations = schools.map((s) => [s.location.lat, s.location.lng]);
     const measure = () => {
       sizeRef.current = canvas.offsetWidth || 560;
       return sizeRef.current;
@@ -50,11 +51,8 @@ export default function Globe({ schools, selectedId, focusKey = 0, onSelect, onU
         baseColor: dark ? [0.25, 0.25, 0.3] : [1, 1, 1],
         markerColor: [0, 0.44, 0.89],
         glowColor: dark ? [0.1, 0.1, 0.2] : [0.92, 0.94, 1],
-        markers: locations.map((location) => ({ location, size: 0.07 })),
-        arcs: locations.length > 1 ? [{ from: locations[0], to: locations[1] }] : [],
-        arcColor: [0, 0.44, 0.89],
-        arcWidth: 0.5,
-        arcHeight: 0.3,
+        markers: [],
+        arcs: [],
       });
       // cobe 2.x does not throw without WebGL; it hands back no-op stubs. Verify the context ourselves.
       const gl = canvas.getContext("webgl2") || canvas.getContext("webgl") || canvas.getContext("experimental-webgl");
@@ -141,7 +139,9 @@ export default function Globe({ schools, selectedId, focusKey = 0, onSelect, onU
             onClick={() => onSelect(s.id)}
             style={{ opacity: 0 }}
           >
-            <span className="globe__pin-dot" />
+            <span className="globe__pin-logo">
+              <Logo src={asset(s.logo)} name={s.shortName} size={36} />
+            </span>
             <span className="globe__pin-label">{s.shortName}</span>
           </button>
         ))}

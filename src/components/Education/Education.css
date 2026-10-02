@@ -3,12 +3,14 @@
 .globe { position: relative; width: min(100%, 520px); aspect-ratio: 1; margin: 0 auto; touch-action: pan-y; cursor: grab; }
 .globe:active { cursor: grabbing; }
 .globe__canvas { width: 100%; height: 100%; display: block; }
-.globe__pin { position: absolute; top: 0; left: 0; width: 28px; height: 28px; display: grid; place-items: center; background: none; border: 0; padding: 0; cursor: pointer; color: var(--text); font: inherit; transition: opacity 0.2s; }
-.globe__pin-dot { width: 14px; height: 14px; border-radius: 50%; background: var(--accent); box-shadow: 0 0 0 4px color-mix(in srgb, var(--accent) 30%, transparent); }
-.globe__pin[data-active="true"] .globe__pin-dot { animation: pulse 1.8s infinite; }
+.globe__pin { position: absolute; top: 0; left: 0; width: 44px; height: 44px; display: grid; place-items: center; background: none; border: 0; padding: 0; cursor: pointer; color: var(--text); font: inherit; transition: opacity 0.2s; }
+.globe__pin-logo { display: grid; place-items: center; width: 40px; height: 40px; border-radius: 50%; background: #fff; overflow: hidden; box-shadow: 0 0 0 3px var(--surface), 0 6px 18px rgba(0, 0, 0, 0.25); transition: transform 0.2s; }
+.globe__pin-logo .logo { border-radius: 50%; width: 100%; height: 100%; background: #fff; }
+.globe__pin:hover .globe__pin-logo { transform: scale(1.08); }
+.globe__pin[data-active="true"] .globe__pin-logo { animation: pulse 1.8s infinite; }
 .globe__pin-label { position: absolute; left: calc(100% + 4px); top: 50%; transform: translateY(-50%); font-size: 0.8rem; font-weight: 600; background: var(--surface); padding: 3px 9px; border-radius: 999px; box-shadow: var(--shadow); white-space: nowrap; }
 .globe__pin[data-side="left"] .globe__pin-label { left: auto; right: calc(100% + 4px); }
-@keyframes pulse { 50% { box-shadow: 0 0 0 10px color-mix(in srgb, var(--accent) 0%, transparent); } }
+@keyframes pulse { 50% { box-shadow: 0 0 0 3px var(--surface), 0 0 0 12px color-mix(in srgb, var(--accent) 30%, transparent); } }
 
 .edu__tabs { display: inline-flex; background: var(--surface-2); padding: 4px; border-radius: 999px; margin-bottom: 20px; }
 .edu__tabs button { border: 0; background: none; color: var(--muted); font: inherit; font-weight: 500; padding: 8px 18px; border-radius: 999px; cursor: pointer; }

@@ -79,6 +79,20 @@ describe("Globe", () => {
     );
     expect(createGlobe.mock.calls.at(-1)[1].dark).toBe(1);
   });
+  it("shows each school's logo as its pin instead of a dot", () => {
+    const { container } = render(<Globe schools={education} selectedId="sjsu" onSelect={() => {}} />);
+    education.forEach((s) => {
+      const pin = screen.getByRole("button", { name: new RegExp(s.location.label) });
+      expect(pin.querySelector("img")).toHaveAttribute("src", expect.stringContaining(s.logo));
+    });
+    expect(container.querySelector(".globe__pin-dot")).toBeNull();
+  });
+  it("draws no connecting line and no built-in markers under the pins", () => {
+    render(<Globe schools={education} selectedId="sjsu" onSelect={() => {}} />);
+    const opts = createGlobe.mock.calls.at(-1)[1];
+    expect(opts.arcs ?? []).toHaveLength(0);
+    expect(opts.markers ?? []).toHaveLength(0);
+  });
   it("reports unavailable when cobe throws", async () => {
     createGlobe.mockImplementationOnce(() => { throw new Error("no webgl"); });
     const onUnavailable = vi.fn();
