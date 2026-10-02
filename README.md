@@ -24,6 +24,7 @@ All copy lives in `src/data/` (`profile.js`, `education.js`, `experience.js`, `p
 
 ## Still to fill
 
-- JPMorgan Chase logo (`logo: null` shows a monogram; SJSU, VNR VJIET and SAP logos are included)
+(Logos are all in place; a school or role with `logo: null` would show a monogram.)
+
 - VNR VJIET GPA (currently 3.67, unconfirmed)
 - Project cover images (currently generated gradients)

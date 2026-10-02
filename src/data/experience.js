@@ -38,7 +38,7 @@ export const experience = [
     short: "JPMC",
     dates: "Feb 2023 – Dec 2024",
     location: "Hyderabad, India",
-    logo: null,
+    logo: "logos/jpmc.jpg",
     summary: [
       "Developed core modules for JADE Catalog, an enterprise data governance and compliance platform managing 40K+ applications and 200K+ data sources, improving traceability, lineage, regulatory compliance, and policy automation.",
       "Engineered scalable data workflows and monitoring systems using Spring Boot, PostgreSQL, Kafka & Elasticsearch, ensuring 99.9% availability, real-time data consistency, and 10× faster artifact retrieval across enterprise systems.",

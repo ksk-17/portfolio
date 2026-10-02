@@ -28,13 +28,11 @@ describe("Experience", () => {
     render(<Experience />);
     expect(screen.getByText(/JPMorgan Chase · Hyderabad, India · Feb 2023 – Dec 2024/)).toBeInTheDocument();
   });
-  it("falls back to a short monogram when an organisation has no logo file", () => {
+  it("shows a real logo on every card", () => {
     render(<Experience />);
-    const card = screen.getByRole("heading", { name: "Software Developer" }).closest("article");
-    expect(within(card).getByText("JPMC")).toBeInTheDocument();
-    expect(within(card).queryByRole("img")).toBeNull();
+    expect(screen.getAllByRole("img")).toHaveLength(experience.length);
   });
-  it("shows the real logo where one exists", () => {
+  it("shows the research role's SJSU logo", () => {
     render(<Experience />);
     const card = screen.getByRole("heading", { name: "Research Assistant" }).closest("article");
     expect(within(card).getByRole("img", { name: /SJSU logo/i })).toHaveAttribute("src", expect.stringContaining("logos/sjsu.svg"));
