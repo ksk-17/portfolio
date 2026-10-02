@@ -1,7 +1,33 @@
 # dependencies
-/node_modules
+node_modules/
 
-# build folder
+# build output
+dist/
 build/
-dist
-.superpowers
+coverage/
+
+# environment files
+# .env is tracked on purpose: it only holds EmailJS public identifiers, which ship in the browser bundle.
+# Local overrides and anything secret go in these and are never committed:
+.env.local
+.env.*.local
+
+# logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# editors and OS
+.vscode/
+.idea/
+*.swp
+.DS_Store
+Thumbs.db
+
+# tooling scratch
+.superpowers/
+.playwright-mcp/
+.vite/
+*.tsbuildinfo
