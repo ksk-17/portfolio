@@ -71,4 +71,10 @@ describe("content data", () => {
     expect(profile.headshot).toBe("avatar.webp");
     expect(existsSync(resolve("public", profile.headshot))).toBe(true);
   });
+  it("has real logos for both schools, SAP and the research role (JPMC still uses a monogram)", () => {
+    education.forEach((e) => expect(e.logo, e.id).toBeTruthy());
+    expect(experience.find((e) => e.id === "sap").logo).toBeTruthy();
+    expect(experience.find((e) => e.id === "research-assistant").logo).toBeTruthy();
+    expect(experience.find((e) => e.id === "jpmc").logo).toBeNull();
+  });
 });

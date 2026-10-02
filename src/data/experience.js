@@ -6,7 +6,7 @@ export const experience = [
     short: "SJSU",
     dates: "Jun 2025 – Present",
     location: "San Jose, CA",
-    logo: null,
+    logo: "logos/sjsu.svg",
     summary: [
       "Conducting research under Prof. Jelena Gligorijevic on LLM + Knowledge Graph reasoning, integrating external knowledge and transparent reasoning techniques to improve factuality, interpretability, and trustworthiness.",
       "Developed multi-agent reasoning frameworks for efficient knowledge graph traversal and multi-hop reasoning, incorporating self-improving mechanisms that iteratively evaluate and refine reasoning strategy.",
