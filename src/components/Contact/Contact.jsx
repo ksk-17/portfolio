@@ -12,10 +12,14 @@ export default function Contact() {
         <p className="section__sub">
           I’m looking for industry research roles and collaborations with professors and PhD students. Say hello.
         </p>
+      </Reveal>
+      <Reveal className="contact__grid">
+        <div className="contact__links">
+          <p className="contact__or">Reach out directly</p>
+          <ContactDock />
+          <p className="contact__email">{profile.email}</p>
+        </div>
         <ContactForm />
-        <p className="contact__or">Or reach out directly</p>
-        <ContactDock />
-        <p className="contact__email">{profile.email}</p>
       </Reveal>
     </section>
   );

@@ -7,6 +7,7 @@
 .globe__pin-dot { width: 14px; height: 14px; border-radius: 50%; background: var(--accent); box-shadow: 0 0 0 4px color-mix(in srgb, var(--accent) 30%, transparent); }
 .globe__pin[data-active="true"] .globe__pin-dot { animation: pulse 1.8s infinite; }
 .globe__pin-label { position: absolute; left: calc(100% + 4px); top: 50%; transform: translateY(-50%); font-size: 0.8rem; font-weight: 600; background: var(--surface); padding: 3px 9px; border-radius: 999px; box-shadow: var(--shadow); white-space: nowrap; }
+.globe__pin[data-side="left"] .globe__pin-label { left: auto; right: calc(100% + 4px); }
 @keyframes pulse { 50% { box-shadow: 0 0 0 10px color-mix(in srgb, var(--accent) 0%, transparent); } }
 
 .edu__tabs { display: inline-flex; background: var(--surface-2); padding: 4px; border-radius: 999px; margin-bottom: 20px; }

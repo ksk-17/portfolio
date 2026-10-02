@@ -92,6 +92,11 @@ describe("Globe", () => {
     expect(onUnavailable).toHaveBeenCalled();
     expect(container.querySelector("canvas")).toBeNull();
   });
+  it("tags each pin with the side its label opens on", () => {
+    render(<Globe schools={education} selectedId="sjsu" onSelect={() => {}} />);
+    runFrames(300);
+    expect(screen.getByRole("button", { name: /SJSU/ })).toHaveAttribute("data-side", "right");
+  });
   it("re-measures the canvas on resize so pins follow the globe", () => {
     let resize;
     globalThis.ResizeObserver = class { constructor(cb) { resize = cb; } observe() {} disconnect() {} };

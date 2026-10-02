@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import createGlobe from "cobe";
 import { useTheme } from "../../theme/ThemeContext";
-import { focusAngles, projectPin, GLOBE_RADIUS_RATIO } from "./globeMath";
+import { focusAngles, projectPin, labelSide, GLOBE_RADIUS_RATIO } from "./globeMath";
 
 export default function Globe({ schools, selectedId, focusKey = 0, onSelect, onUnavailable }) {
   const canvasRef = useRef(null);
@@ -96,6 +96,7 @@ export default function Globe({ schools, selectedId, focusKey = 0, onSelect, onU
         if (!el) return;
         const p = projectPin(s.location.lat, s.location.lng, phi, theta);
         el.style.transform = `translate(${half + p.x * R}px, ${half - p.y * R}px) translate(-50%, -50%)`;
+        el.dataset.side = labelSide(p.x);
         el.style.opacity = p.visible ? 1 : 0;
         el.style.pointerEvents = p.visible ? "auto" : "none";
       });

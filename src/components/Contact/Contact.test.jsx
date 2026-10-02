@@ -16,4 +16,14 @@ describe("Contact", () => {
     expect(within(section).getByText(profile.email)).toBeInTheDocument();
     expect(within(section).getAllByRole("link")).toHaveLength(3);
   });
+  it("puts the contact links in the left column and the form in the right column", () => {
+    const { container } = render(<Contact />);
+    const grid = container.querySelector(".contact__grid");
+    expect(grid.children).toHaveLength(2);
+    const [left, right] = grid.children;
+    expect(within(left).getAllByRole("link")).toHaveLength(3);
+    expect(within(left).getByText(profile.email)).toBeInTheDocument();
+    expect(left.querySelector("form")).toBeNull();
+    expect(right.tagName).toBe("FORM");
+  });
 });

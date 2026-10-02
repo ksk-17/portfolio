@@ -1,5 +1,5 @@
 import { describe, it, expect } from "vitest";
-import { focusAngles, projectPin } from "./globeMath";
+import { focusAngles, projectPin, labelSide } from "./globeMath";
 
 const places = [
   [37.3352, -121.8811],
@@ -27,5 +27,16 @@ describe("globeMath", () => {
   it("keeps projected coordinates inside the unit disc", () => {
     const p = projectPin(10, 20, 1.1, 0.3);
     expect(Math.hypot(p.x, p.y)).toBeLessThanOrEqual(1 + 1e-9);
+  });
+});
+
+describe("labelSide", () => {
+  it("keeps labels on the right for pins in the left or centre of the disc", () => {
+    expect(labelSide(-0.9)).toBe("right");
+    expect(labelSide(0)).toBe("right");
+  });
+  it("flips labels to the left for pins on the right side so they never leave the globe", () => {
+    expect(labelSide(0.5)).toBe("left");
+    expect(labelSide(1)).toBe("left");
   });
 });

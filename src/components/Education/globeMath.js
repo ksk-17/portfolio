@@ -19,3 +19,8 @@ export function projectPin(lat, lng, phi, theta) {
   const z2 = y0 * Math.sin(theta) + z1 * Math.cos(theta);
   return { x: x1, y: y2, visible: z2 > 0 };
 }
+
+// Which side of its pin the label opens on, so labels stay inside the globe's box.
+export function labelSide(x) {
+  return x > 0.2 ? "left" : "right";
+}
