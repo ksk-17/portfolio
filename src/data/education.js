@@ -7,7 +7,7 @@ export const education = [
     dates: "Jan 2025 – Dec 2026",
     gpa: "3.67",
     location: { label: "San Jose, California", lat: 37.3352, lng: -121.8811 },
-    logo: "logos/sjsu.svg",
+    logo: null,
     coursework: [
       "Machine Learning",
       "Artificial Intelligence and Data Engineering",
@@ -31,7 +31,7 @@ export const education = [
     dates: "Aug 2019 – May 2023",
     gpa: "3.67",
     location: { label: "Hyderabad, India", lat: 17.54, lng: 78.386 },
-    logo: "logos/vnrvjiet.png",
+    logo: null,
     coursework: [
       "Linear Algebra",
       "Statistics",

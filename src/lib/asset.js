@@ -1,1 +1,1 @@
-export const asset = (path) => import.meta.env.BASE_URL + path.replace(/^\//, "");
+export const asset = (path) => (path ? import.meta.env.BASE_URL + path.replace(/^\//, "") : undefined);

@@ -1,4 +1,6 @@
 import { describe, it, expect } from "vitest";
+import { existsSync } from "node:fs";
+import { resolve } from "node:path";
 import { profile } from "./profile";
 import { education } from "./education";
 import { experience } from "./experience";
@@ -38,5 +40,10 @@ describe("content data", () => {
   });
   it("has fixed the known typos", () => {
     expect(allText).not.toMatch(/INdia|Intellignece/);
+  });
+  it("only references logo files that exist (null means monogram fallback)", () => {
+    [...education, ...experience].forEach((e) => {
+      if (e.logo !== null) expect(existsSync(resolve("public", e.logo)), e.logo).toBe(true);
+    });
   });
 });

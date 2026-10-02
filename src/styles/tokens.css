@@ -6,6 +6,9 @@
   --muted: #6e6e73;
   --line: rgba(0, 0, 0, 0.08);
   --accent: #0071e3;
+  --grad-a: #0066cc;
+  --grad-b: #6f3bd6;
+  --skip-bg: #0071e3;
   --radius: 28px;
   --shadow: 0 20px 60px rgba(0, 0, 0, 0.08);
   --font: "Inter", -apple-system, BlinkMacSystemFont, "SF Pro Display", system-ui, sans-serif;
@@ -21,6 +24,8 @@
     --muted: #a1a1a6;
     --line: rgba(255, 255, 255, 0.12);
     --accent: #2997ff;
+    --grad-a: #4da3ff;
+    --grad-b: #c58bff;
     --shadow: 0 20px 60px rgba(0, 0, 0, 0.6);
   }
 }

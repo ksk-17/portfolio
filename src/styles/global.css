@@ -13,7 +13,7 @@ a { color: inherit; }
 .section__sub { color: var(--muted); font-size: clamp(1.05rem, 2vw, 1.35rem); max-width: 640px; margin: 0 0 40px; }
 .eyebrow { color: var(--muted); font-weight: 500; margin: 0 0 8px; }
 
-.skip-link { position: absolute; left: -999px; top: 8px; background: var(--accent); color: #fff; padding: 8px 14px; border-radius: 999px; z-index: 100; }
+.skip-link { position: absolute; left: -999px; top: 8px; background: var(--skip-bg); color: #fff; padding: 8px 14px; border-radius: 999px; z-index: 100; }
 .skip-link:focus { left: 12px; }
 
 .logo { border-radius: 12px; object-fit: contain; background: #fff; flex: none; }

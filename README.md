@@ -19,7 +19,7 @@ npm run deploy   # builds and publishes dist/ to GitHub Pages via gh-pages
 All copy lives in `src/data/` (`profile.js`, `education.js`, `experience.js`, `projects.js`).
 
 - Headshot: replace `public/image.png`.
-- Logos: drop files in `public/logos/` using the names referenced in `src/data/` (`sjsu.svg`, `vnrvjiet.png`, `jpmc.svg`, `sap.svg`). Missing logos fall back to a monogram.
+- Logos: drop a file in `public/logos/` and set the `logo` field in `src/data/` (e.g. `"logos/sjsu.svg"`). `logo: null` shows a monogram.
 - Project covers are generated gradients; real screenshots can be added later.
 
 ## Placeholders still to fill

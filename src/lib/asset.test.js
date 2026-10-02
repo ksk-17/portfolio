@@ -9,4 +9,8 @@ describe("asset", () => {
     expect(asset("/logos/sap.svg")).toBe(`${import.meta.env.BASE_URL}logos/sap.svg`);
     expect(asset("/logos/sap.svg").startsWith("//")).toBe(false);
   });
+  it("returns undefined for a missing path instead of throwing", () => {
+    expect(asset(null)).toBeUndefined();
+    expect(asset(undefined)).toBeUndefined();
+  });
 });

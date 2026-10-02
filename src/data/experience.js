@@ -4,7 +4,7 @@ export const experience = [
     role: "Research Assistant",
     company: "SKILL Lab, San José State University",
     dates: "Present",
-    logo: "logos/sjsu.svg",
+    logo: null,
     summary: [
       "Fusing Knowledge Graphs into Large Language Models for biomedical reasoning, under Prof. Jelena Gligorijevic.",
     ],
@@ -25,7 +25,7 @@ export const experience = [
     role: "Software Engineer",
     company: "JPMorgan Chase",
     dates: "Jun 2023 – Dec 2024",
-    logo: "logos/jpmc.svg",
+    logo: null,
     summary: [
       "Built core modules of the JADE Catalog, an enterprise data-governance platform covering 40k+ applications and 200k+ data sources.",
       "Shipped Spring Boot microservices on AWS/Kubernetes with PostgreSQL, Kafka and Terraform; kept data-sync pipelines at 99.9% availability.",
@@ -44,7 +44,7 @@ export const experience = [
     role: "Software Engineer Intern",
     company: "JPMorgan Chase",
     dates: "Jan 2023 – May 2024",
-    logo: "logos/jpmc.svg",
+    logo: null,
     summary: ["Internship preceding the full-time Software Engineer role."],
     details: [],
   },
