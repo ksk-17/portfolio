@@ -22,9 +22,8 @@ All copy lives in `src/data/` (`profile.js`, `education.js`, `experience.js`, `p
 - Logos: drop a file in `public/logos/` and set the `logo` field in `src/data/` (e.g. `"logos/sjsu.svg"`). `logo: null` shows a monogram.
 - Project covers are generated gradients; real screenshots can be added later.
 
-## Placeholders still to fill
+## Still to fill
 
-- SAP role (title, dates, bullets) in `src/data/experience.js`
-- SKILL Lab research assistant bullets and start date
-- JPMC intern dates (currently overlap the full-time role) and the two GPAs (both 3.67)
-- Logos for SJSU, VNR VJIET and JPMorgan Chase
+- Logos for SJSU, VNR VJIET and JPMorgan Chase (`logo: null` shows a monogram; SAP's logo is included)
+- VNR VJIET GPA (currently 3.67, unconfirmed)
+- Project cover images (currently generated gradients)
