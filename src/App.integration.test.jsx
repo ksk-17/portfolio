@@ -9,7 +9,8 @@ describe("App", () => {
       expect(screen.getByRole("heading", { level: 2, name })).toBeInTheDocument()
     );
     expect(screen.queryByRole("heading", { name: /skills|certifications/i })).toBeNull();
-    expect(container.querySelector("form")).toBeNull();
+    expect(container.querySelectorAll("form")).toHaveLength(1);
+    expect(container.querySelector("#contact form")).not.toBeNull();
     ["top", "education", "experience", "projects", "contact"].forEach((id) =>
       expect(container.querySelector(`#${id}`)).not.toBeNull()
     );

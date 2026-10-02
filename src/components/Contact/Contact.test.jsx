@@ -4,6 +4,10 @@ import Contact from "./Contact";
 import { profile } from "../../data/profile";
 
 describe("Contact", () => {
+  it("includes the message form", () => {
+    render(<Contact />);
+    expect(screen.getByRole("button", { name: /send/i })).toBeInTheDocument();
+  });
   it("is the #contact section with a heading, the email and the three contact links", () => {
     const { container } = render(<Contact />);
     const section = container.querySelector("section#contact");

@@ -13,6 +13,7 @@
     "deploy": "gh-pages -d dist"
   },
   "dependencies": {
+    "@emailjs/browser": "^4.4.1",
     "cobe": "^2.0.1",
     "motion": "^13.5.0",
     "react": "^19.3.0",

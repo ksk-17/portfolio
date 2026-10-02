@@ -8,3 +8,4 @@
   .contact .dock { gap: 16px; }
   .contact .icon3d__face, .contact .icon3d__side { width: 68px; height: 68px; }
 }
+.contact__or { margin: 0 0 20px; color: var(--muted); font-size: 0.95rem; }
