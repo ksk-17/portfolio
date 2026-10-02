@@ -3,7 +3,7 @@ export const profile = {
   shortName: "Sumanth",
   roles: ["ML Engineer", "ML Researcher", "Software Engineer"],
   lede:
-    "I build generalizable, explainable AI. M.S. in Artificial Intelligence at San José State University (graduating Fall 2026), previously Software Engineer at JPMorgan Chase. I'm looking for industry research roles and collaborations in knowledge-graph-grounded LLMs and neuro-symbolic vision reasoning.",
+    "I build generalizable, explainable AI. M.S. in Artificial Intelligence at San José State University (graduating Fall 2026), previously Software Developer at JPMorgan Chase. I'm looking for industry research roles and collaborations in knowledge-graph-grounded LLMs and neuro-symbolic vision reasoning.",
   email: "sumanthkumarkotagudem@gmail.com",
   headshot: "avatar.webp",
   links: {

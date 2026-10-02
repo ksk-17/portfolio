@@ -8,10 +8,10 @@ export default function StackCard({ item, index }) {
   return (
     <article className="stack__card" style={{ "--i": index }} data-placeholder={item.placeholder ? "true" : undefined}>
       <header className="stack__head">
-        <Logo src={asset(item.logo)} name={item.company} size={52} />
+        <Logo src={asset(item.logo)} name={item.short ?? item.company} size={52} />
         <div>
           <h3 className="stack__role">{item.role}</h3>
-          <p className="stack__meta">{item.company} · {item.dates}</p>
+          <p className="stack__meta">{[item.company, item.location, item.dates].filter(Boolean).join(" · ")}</p>
         </div>
       </header>
       <ul className="stack__list">

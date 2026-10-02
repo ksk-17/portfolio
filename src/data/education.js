@@ -4,8 +4,8 @@ export const education = [
     school: "San José State University",
     shortName: "SJSU",
     degree: "M.S. in Artificial Intelligence",
-    dates: "Jan 2025 – Dec 2026",
-    gpa: "3.67",
+    dates: "Jan 2025 – Present",
+    gpa: "3.77",
     location: { label: "San Jose, California", lat: 37.3352, lng: -121.8811 },
     logo: null,
     coursework: [
@@ -15,11 +15,12 @@ export const education = [
       "Reinforcement Learning",
       "Natural Language Processing",
       "Recommender Systems",
+      "Deep Learning",
     ],
     highlights: [
       {
-        title: "Master's thesis — Neuro-Symbolic Vision Reasoning Models",
-        text: "Strengthening visual reasoning by combining neural learning with structured symbolic reasoning.",
+        title: "Master's thesis — Vision Reasoning using a Neuro-Symbolic Approach",
+        text: "Strengthening visual reasoning by combining neural learning with structured symbolic reasoning, toward vision models that are more robust, interpretable and scalable.",
       },
     ],
   },

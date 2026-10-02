@@ -23,12 +23,33 @@ describe("content data", () => {
       expect(e.coursework.length).toBeGreaterThan(0);
     });
   });
-  it("experience covers JPMC, SAP and the research role with unique ids", () => {
+  it("experience covers the research role, SAP Labs and a single JPMorgan Chase role", () => {
     expect(new Set(experience.map((e) => e.id)).size).toBe(experience.length);
-    const companies = experience.map((e) => e.company).join("|");
-    expect(companies).toMatch(/JPMorgan/);
-    expect(companies).toMatch(/SAP/);
-    expect(companies).toMatch(/SKILL Lab/);
+    expect(experience.map((e) => e.company)).toEqual([
+      expect.stringMatching(/San José State University/),
+      "SAP Labs",
+      "JPMorgan Chase",
+    ]);
+    const sap = experience.find((e) => e.id === "sap");
+    expect(sap.role).toBe("AI Software Developer Intern / Performance Engineer");
+    expect(sap.dates).toBe("Jul 2026 – Sep 2026");
+    expect(sap.placeholder).toBeUndefined();
+    const jpmc = experience.find((e) => e.company === "JPMorgan Chase");
+    expect(jpmc.role).toBe("Software Developer");
+    expect(jpmc.dates).toBe("Feb 2023 – Dec 2024");
+    expect(jpmc.location).toBe("Hyderabad, India");
+    const ra = experience.find((e) => e.id === "research-assistant");
+    expect(ra.dates).toBe("Jun 2025 – Present");
+    experience.forEach((e) => expect(e.summary.length + e.details.length).toBeGreaterThanOrEqual(3));
+  });
+  it("SJSU education has the updated GPA, Deep Learning and the neuro-symbolic vision reasoning thesis", () => {
+    const sjsu = education.find((e) => e.id === "sjsu");
+    expect(sjsu.gpa).toBe("3.77");
+    expect(sjsu.dates).toBe("Jan 2025 – Present");
+    expect(sjsu.coursework).toContain("Deep Learning");
+    const thesis = sjsu.highlights.find((h) => /thesis/i.test(h.title));
+    expect(thesis.title).toMatch(/vision reasoning/i);
+    expect(thesis.title).toMatch(/neuro-symbolic/i);
   });
   it("every project has a GitHub https link, tags and a summary", () => {
     expect(projects.length).toBe(5);
