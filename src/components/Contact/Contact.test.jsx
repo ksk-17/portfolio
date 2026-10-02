@@ -23,7 +23,9 @@ describe("Contact", () => {
     const [left, right] = grid.children;
     expect(within(left).getAllByRole("link")).toHaveLength(3);
     expect(within(left).getByText(profile.email)).toBeInTheDocument();
+    expect(within(left).getByRole("heading", { level: 2, name: "Contact" })).toBeInTheDocument();
     expect(left.querySelector("form")).toBeNull();
     expect(right.tagName).toBe("FORM");
+    expect(within(right).queryByRole("heading")).toBeNull();
   });
 });

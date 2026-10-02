@@ -1,6 +1,6 @@
 .contact__grid { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.1fr); gap: clamp(32px, 6vw, 72px); align-items: start; }
-.contact__links { padding-top: 8px; }
-.contact__or { margin: 0 0 24px; color: var(--muted); font-size: 0.95rem; font-weight: 500; }
+.contact__links .section__sub { margin: 0 0 40px; }
+.contact__or { margin: 0 0 20px; color: var(--muted); font-size: 0.95rem; font-weight: 500; }
 .contact .dock { gap: 24px; }
 .contact .icon3d__face, .contact .icon3d__side { width: 76px; height: 76px; border-radius: 22px; }
 .contact .icon3d__label { font-size: 0.9rem; }
