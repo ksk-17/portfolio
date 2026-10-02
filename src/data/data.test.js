@@ -13,7 +13,7 @@ describe("content data", () => {
     expect(profile.email).toBe("sumanthkumarkotagudem@gmail.com");
     expect(profile.links.linkedin).toBe("https://www.linkedin.com/in/ksk-17/");
     expect(profile.links.github).toBe("https://github.com/ksk-17");
-    expect(profile.links.kaggle).toBe("https://www.kaggle.com/ksk872");
+    expect(profile.links.kaggle).toBeUndefined();
   });
   it("education entries have unique ids and valid coordinates", () => {
     expect(new Set(education.map((e) => e.id)).size).toBe(education.length);

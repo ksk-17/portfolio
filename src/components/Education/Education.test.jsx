@@ -6,6 +6,7 @@ import { education } from "../../data/education";
 vi.mock("cobe", () => ({ default: vi.fn(() => ({ update: vi.fn(), destroy: vi.fn() })) }));
 
 import createGlobe from "cobe";
+import { ThemeContext } from "../../theme/ThemeContext";
 import Education from "./Education";
 import Globe from "./Globe";
 
@@ -69,6 +70,14 @@ describe("Globe", () => {
     const { container } = render(<Globe schools={education} selectedId="sjsu" onSelect={() => {}} onUnavailable={onUnavailable} />);
     expect(onUnavailable).not.toHaveBeenCalled();
     expect(container.querySelector("canvas")).not.toBeNull();
+  });
+  it("draws the dark globe when the theme is dark", () => {
+    render(
+      <ThemeContext.Provider value={{ theme: "dark", toggle() {} }}>
+        <Globe schools={education} selectedId="sjsu" onSelect={() => {}} />
+      </ThemeContext.Provider>
+    );
+    expect(createGlobe.mock.calls.at(-1)[1].dark).toBe(1);
   });
   it("reports unavailable when cobe throws", async () => {
     createGlobe.mockImplementationOnce(() => { throw new Error("no webgl"); });

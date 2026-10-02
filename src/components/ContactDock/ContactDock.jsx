@@ -2,7 +2,7 @@ import { useEffect, useRef, useState } from "react";
 import { profile } from "../../data/profile";
 import Toast from "../ui/Toast";
 import Icon3D from "./Icon3D";
-import { MailGlyph, GitHubGlyph, LinkedInGlyph, KaggleGlyph } from "./glyphs";
+import { MailGlyph, GitHubGlyph, LinkedInGlyph } from "./glyphs";
 import "./ContactDock.css";
 
 export default function ContactDock() {
@@ -30,7 +30,6 @@ export default function ContactDock() {
       <Icon3D label="Email" href={`mailto:${profile.email}`} tone="#ff5f57" external={false} onClick={onEmail}><MailGlyph /></Icon3D>
       <Icon3D label="LinkedIn" href={profile.links.linkedin} tone="#0a66c2"><LinkedInGlyph /></Icon3D>
       <Icon3D label="GitHub" href={profile.links.github} tone="#24292f"><GitHubGlyph /></Icon3D>
-      <Icon3D label="Kaggle" href={profile.links.kaggle} tone="#20beff"><KaggleGlyph /></Icon3D>
       <Toast message={toast} />
     </div>
   );

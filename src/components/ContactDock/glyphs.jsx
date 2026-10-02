@@ -9,6 +9,3 @@ export const GitHubGlyph = () => (
 export const LinkedInGlyph = () => (
   <svg {...common}><text x="12" y="17.5" textAnchor="middle" fontSize="15" fontWeight="800" fontFamily="Inter, Arial, sans-serif">in</text></svg>
 );
-export const KaggleGlyph = () => (
-  <svg {...common}><text x="12" y="18" textAnchor="middle" fontSize="18" fontWeight="800" fontFamily="Inter, Arial, sans-serif">k</text></svg>
-);

@@ -1,8 +1,8 @@
 # Portfolio — Sumanth Kumar Kotagudem
 
-Apple-style personal site built with Vite + React 19. 3D is used sparingly: a lazy-loaded
-react-three-fiber hero backdrop, a tilting headshot card, CSS-3D contact icons and a COBE education globe.
-Every 3D piece has a static fallback (no WebGL, reduced motion, small screens).
+Apple-style personal site built with Vite + React 19. 3D is used sparingly: a tilting headshot card,
+CSS-3D contact icons and a COBE education globe. Light/dark toggle in the nav (remembers your choice,
+otherwise follows the system). The globe falls back to the school tabs when WebGL is unavailable.
 
 ## Develop
 

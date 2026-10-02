@@ -15,8 +15,8 @@ describe("Hero", () => {
     const img = screen.getByAltText(new RegExp(profile.name));
     expect(img.getAttribute("src")).toBe(`${import.meta.env.BASE_URL}image.png`);
   });
-  it("does not mount the 3D backdrop when WebGL is unavailable", () => {
+  it("has no decorative 3D layer", () => {
     const { container } = render(<Hero />);
-    expect(container.querySelector(".backdrop3d")).toBeNull();
+    expect(container.querySelector("canvas, .backdrop3d")).toBeNull();
   });
 });

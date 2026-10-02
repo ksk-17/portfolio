@@ -9,6 +9,5 @@ export const profile = {
   links: {
     linkedin: "https://www.linkedin.com/in/ksk-17/",
     github: "https://github.com/ksk-17",
-    kaggle: "https://www.kaggle.com/ksk872",
   },
 };

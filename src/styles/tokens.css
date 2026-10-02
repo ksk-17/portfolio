@@ -13,10 +13,10 @@
   --shadow: 0 20px 60px rgba(0, 0, 0, 0.08);
   --font: "Inter", -apple-system, BlinkMacSystemFont, "SF Pro Display", system-ui, sans-serif;
   --nav-h: 56px;
-  color-scheme: light dark;
+  color-scheme: light;
 }
 @media (prefers-color-scheme: dark) {
-  :root {
+  :root:not([data-theme="light"]) {
     --bg: #000000;
     --surface: #1c1c1e;
     --surface-2: #2c2c2e;
@@ -27,5 +27,19 @@
     --grad-a: #4da3ff;
     --grad-b: #c58bff;
     --shadow: 0 20px 60px rgba(0, 0, 0, 0.6);
+    color-scheme: dark;
   }
+}
+:root[data-theme="dark"] {
+  --bg: #000000;
+  --surface: #1c1c1e;
+  --surface-2: #2c2c2e;
+  --text: #f5f5f7;
+  --muted: #a1a1a6;
+  --line: rgba(255, 255, 255, 0.12);
+  --accent: #2997ff;
+  --grad-a: #4da3ff;
+  --grad-b: #c58bff;
+  --shadow: 0 20px 60px rgba(0, 0, 0, 0.6);
+  color-scheme: dark;
 }

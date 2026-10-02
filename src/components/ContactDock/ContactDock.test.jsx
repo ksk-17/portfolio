@@ -10,14 +10,15 @@ beforeEach(() => {
 });
 
 describe("ContactDock", () => {
-  it("renders four labelled links with safe external targets", () => {
+  it("renders three labelled links with safe external targets and no Kaggle", () => {
     render(<ContactDock />);
     const gh = screen.getByRole("link", { name: /github/i });
     expect(gh).toHaveAttribute("href", profile.links.github);
     expect(gh).toHaveAttribute("target", "_blank");
     expect(gh.getAttribute("rel")).toMatch(/noopener/);
     expect(screen.getByRole("link", { name: /linkedin/i })).toHaveAttribute("href", profile.links.linkedin);
-    expect(screen.getByRole("link", { name: /kaggle/i })).toHaveAttribute("href", profile.links.kaggle);
+    expect(screen.queryByRole("link", { name: /kaggle/i })).toBeNull();
+    expect(screen.getAllByRole("link")).toHaveLength(3);
     expect(screen.getByRole("link", { name: /email/i })).toHaveAttribute("href", `mailto:${profile.email}`);
   });
 

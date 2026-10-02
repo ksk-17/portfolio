@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { profile } from "../../data/profile";
 import { useActiveSection } from "../../hooks/useActiveSection";
+import ThemeToggle from "./ThemeToggle";
 import "./Nav.css";
 
 const links = [
@@ -17,10 +18,7 @@ export default function Nav() {
   return (
     <header className="nav">
       <nav className="nav__inner" aria-label="Primary">
-        <a className="nav__brand" href="#top">{profile.shortName}</a>
-        <button className="nav__toggle" aria-expanded={open} aria-controls="nav-links" onClick={() => setOpen((o) => !o)}>
-          {open ? "Close" : "Menu"}
-        </button>
+        <a className="nav__brand" href="#top">{profile.name}</a>
         <ul id="nav-links" className="nav__links" data-open={open}>
           {links.map((l) => (
             <li key={l.id}>
@@ -30,6 +28,12 @@ export default function Nav() {
             </li>
           ))}
         </ul>
+        <div className="nav__actions">
+          <ThemeToggle />
+          <button className="nav__toggle" aria-expanded={open} aria-controls="nav-links" onClick={() => setOpen((o) => !o)}>
+            {open ? "Close" : "Menu"}
+          </button>
+        </div>
       </nav>
     </header>
   );

@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import createGlobe from "cobe";
+import { useTheme } from "../../theme/ThemeContext";
 import { focusAngles, projectPin, GLOBE_RADIUS_RATIO } from "./globeMath";
 
 export default function Globe({ schools, selectedId, focusKey = 0, onSelect, onUnavailable }) {
@@ -10,6 +11,7 @@ export default function Globe({ schools, selectedId, focusKey = 0, onSelect, onU
   const target = useRef({ phi: 0, theta: 0.3 });
   const drag = useRef(null);
   const [failed, setFailed] = useState(false);
+  const { theme } = useTheme();
 
   // Re-centre whenever a school is chosen, even if it is already the selected one.
   useEffect(() => {
@@ -21,7 +23,7 @@ export default function Globe({ schools, selectedId, focusKey = 0, onSelect, onU
     const canvas = canvasRef.current;
     if (!canvas) return undefined;
     const dpr = Math.min(window.devicePixelRatio || 1, 2);
-    const dark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+    const dark = theme === "dark";
     const locations = schools.map((s) => [s.location.lat, s.location.lng]);
     const measure = () => {
       sizeRef.current = canvas.offsetWidth || 560;
@@ -106,7 +108,7 @@ export default function Globe({ schools, selectedId, focusKey = 0, onSelect, onU
       io.disconnect();
       globe.destroy();
     };
-  }, [schools]); // eslint-disable-line react-hooks/exhaustive-deps
+  }, [schools, theme]); // eslint-disable-line react-hooks/exhaustive-deps
 
   function down(e) {
     drag.current = { x: e.clientX };

@@ -1,4 +1,5 @@
 import { MotionConfig } from "motion/react";
+import { ThemeProvider } from "./theme/ThemeContext";
 import Nav from "./components/Nav/Nav";
 import Footer from "./components/Footer";
 import Hero from "./components/Hero/Hero";
@@ -8,6 +9,7 @@ import Projects from "./components/Projects/Projects";
 
 export default function App() {
   return (
+    <ThemeProvider>
     <MotionConfig reducedMotion="user">
       <a className="skip-link" href="#education">Skip to content</a>
       <Nav />
@@ -19,5 +21,6 @@ export default function App() {
       </main>
       <Footer />
     </MotionConfig>
+    </ThemeProvider>
   );
 }
