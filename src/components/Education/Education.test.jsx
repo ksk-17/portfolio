@@ -63,6 +63,13 @@ describe("Globe", () => {
     await user.click(screen.getByRole("button", { name: new RegExp(education[1].location.label) }));
     expect(onSelect).toHaveBeenCalledWith(education[1].id);
   });
+  it("keeps the globe when the canvas holds a webgl2 context (a webgl request returns null)", () => {
+    HTMLCanvasElement.prototype.getContext = vi.fn((type) => (type === "webgl2" ? { isContextLost: () => false } : null));
+    const onUnavailable = vi.fn();
+    const { container } = render(<Globe schools={education} selectedId="sjsu" onSelect={() => {}} onUnavailable={onUnavailable} />);
+    expect(onUnavailable).not.toHaveBeenCalled();
+    expect(container.querySelector("canvas")).not.toBeNull();
+  });
   it("reports unavailable when cobe throws", async () => {
     createGlobe.mockImplementationOnce(() => { throw new Error("no webgl"); });
     const onUnavailable = vi.fn();

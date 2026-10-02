@@ -55,7 +55,7 @@ export default function Globe({ schools, selectedId, focusKey = 0, onSelect, onU
         arcHeight: 0.3,
       });
       // cobe 2.x does not throw without WebGL; it hands back no-op stubs. Verify the context ourselves.
-      const gl = canvas.getContext("webgl") || canvas.getContext("experimental-webgl");
+      const gl = canvas.getContext("webgl2") || canvas.getContext("webgl") || canvas.getContext("experimental-webgl");
       if (!gl || gl.isContextLost?.()) throw new Error("WebGL context unavailable");
     } catch {
       globe?.destroy?.();
