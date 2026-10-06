@@ -16,16 +16,26 @@ describe("Projects", () => {
       expect(link).toHaveAttribute("target", "_blank");
     });
   });
-  it("scrolls the track from the arrow buttons and keyboard", async () => {
+  it("scrolls the track from the keyboard", async () => {
     const user = userEvent.setup();
     render(<Projects />);
-    await user.click(screen.getByRole("button", { name: /next project/i }));
-    expect(Element.prototype.scrollBy.mock.calls.at(-1)[0].left).toBeGreaterThan(0);
-    await user.click(screen.getByRole("button", { name: /previous project/i }));
-    expect(Element.prototype.scrollBy.mock.calls.at(-1)[0].left).toBeLessThan(0);
     screen.getByRole("region", { name: /projects/i }).focus();
     await user.keyboard("{ArrowRight}");
     expect(Element.prototype.scrollBy.mock.calls.at(-1)[0].left).toBeGreaterThan(0);
+    await user.keyboard("{ArrowLeft}");
+    expect(Element.prototype.scrollBy.mock.calls.at(-1)[0].left).toBeLessThan(0);
+  });
+  it("has no arrow buttons and nudges the track every 10s", () => {
+    vi.useFakeTimers();
+    window.matchMedia = window.matchMedia || (() => ({ matches: false }));
+    render(<Projects />);
+    expect(screen.queryByRole("button", { name: /project/i })).toBeNull();
+    Element.prototype.scrollBy.mockClear();
+    vi.advanceTimersByTime(10000);
+    expect(Element.prototype.scrollBy.mock.calls.at(-1)[0].left).toBeGreaterThan(0);
+    vi.advanceTimersByTime(900);
+    expect(Element.prototype.scrollBy.mock.calls.at(-1)[0].left).toBeLessThan(0);
+    vi.useRealTimers();
   });
 });
 

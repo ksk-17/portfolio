@@ -1,6 +1,3 @@
-.carousel__controls { display: flex; gap: 10px; justify-content: flex-end; margin-bottom: 16px; }
-.carousel__controls button { width: 44px; height: 44px; border-radius: 50%; border: 1px solid var(--line); background: var(--surface); color: var(--text); font-size: 1.1rem; cursor: pointer; }
-.carousel__controls button:hover { background: var(--surface-2); }
 .carousel { display: flex; gap: 24px; overflow-x: auto; scroll-snap-type: x mandatory; padding: 28px 24px 88px; margin: 0 -24px -48px; scroll-padding-inline: 24px; scrollbar-width: none; perspective: 1000px; }
 .carousel::-webkit-scrollbar { display: none; }
 .pcard { flex: 0 0 min(84vw, 340px); scroll-snap-align: start; background: var(--surface); border-radius: var(--radius); overflow: hidden; box-shadow: var(--shadow), inset 0 0 0 1px var(--line); display: flex; flex-direction: column; }
@@ -13,3 +10,11 @@
 .pcard__summary { margin: 0; color: var(--muted); font-size: 0.95rem; flex: 1; }
 .pcard__link { color: var(--accent); text-decoration: none; font-weight: 500; margin-top: 6px; }
 .pcard__link:hover { text-decoration: underline; }
+.pcard__context { margin: -4px 0 0; color: var(--muted); font-size: 0.8rem; }
+.pcard--more { align-items: center; justify-content: center; gap: 8px; text-decoration: none; color: var(--text); text-align: center; min-height: 320px; }
+.pcard--more:hover { background: var(--surface-2); }
+.pcard--more__label { font-size: 1.25rem; font-weight: 600; letter-spacing: -0.02em; }
+.pcard--more__arrow { font-size: 2rem; color: var(--accent); }
+.pcard--more__sub { color: var(--muted); font-size: 0.9rem; }
+.cover--image { background: var(--surface-2); }
+.cover--image img { width: 100%; height: 100%; object-fit: cover; object-position: top left; display: block; }

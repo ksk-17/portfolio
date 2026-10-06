@@ -52,9 +52,9 @@ describe("content data", () => {
     expect(thesis.title).toMatch(/neuro-symbolic/i);
   });
   it("every project has a GitHub https link, tags and a summary", () => {
-    expect(projects.length).toBe(5);
+    expect(projects.length).toBe(8);
     projects.forEach((p) => {
-      expect(p.github).toMatch(/^https:\/\/github\.com\/ksk-17\//);
+      expect(p.github).toMatch(/^https:\/\/github\.com\/(ksk-17|CR2004|AkankshaThalla-24)\//);
       expect(p.tags.length).toBeGreaterThan(0);
       expect(p.summary.length).toBeGreaterThan(40);
     });

@@ -1,5 +1,5 @@
-import { useRef } from "react";
-import { projects } from "../../data/projects";
+import { useEffect, useRef } from "react";
+import { projects, moreProjects } from "../../data/projects";
 import Reveal from "../ui/Reveal";
 import ProjectCard from "./ProjectCard";
 import "./Projects.css";
@@ -14,16 +14,39 @@ export default function Projects() {
     el.scrollBy({ left: dir * step, behavior: "smooth" });
   }
 
+  // Every 10s, nudge the track sideways and back so it reads as scrollable.
+  useEffect(() => {
+    const el = track.current;
+    if (!el || window.matchMedia?.("(prefers-reduced-motion: reduce)").matches) return;
+    let paused = false;
+    const pause = () => { paused = true; };
+    const resume = () => { paused = false; };
+    el.addEventListener("pointerenter", pause);
+    el.addEventListener("pointerleave", resume);
+    el.addEventListener("focusin", pause);
+    el.addEventListener("focusout", resume);
+    let back;
+    const id = setInterval(() => {
+      if (paused || document.hidden) return;
+      el.scrollBy({ left: 90, behavior: "smooth" });
+      back = setTimeout(() => { if (!paused) el.scrollBy({ left: -90, behavior: "smooth" }); }, 900);
+    }, 10000);
+    return () => {
+      clearInterval(id);
+      clearTimeout(back);
+      el.removeEventListener("pointerenter", pause);
+      el.removeEventListener("pointerleave", resume);
+      el.removeEventListener("focusin", pause);
+      el.removeEventListener("focusout", resume);
+    };
+  }, []);
+
   return (
     <section id="projects" className="section">
       <Reveal>
         <h2 className="section__title">Projects</h2>
-        <p className="section__sub">Selected work in LLMs, generative models and recommender systems.</p>
+        <p className="section__sub">Recent work in multi-agent systems, LLM alignment, computer vision and retrieval.</p>
       </Reveal>
-      <div className="carousel__controls">
-        <button onClick={() => scrollByCard(-1)} aria-label="Previous project">←</button>
-        <button onClick={() => scrollByCard(1)} aria-label="Next project">→</button>
-      </div>
       <div
         ref={track}
         className="carousel"
@@ -42,6 +65,11 @@ export default function Projects() {
         }}
       >
         {projects.map((p) => <ProjectCard key={p.slug} project={p} />)}
+        <a className="pcard pcard--more" href={moreProjects.href} target="_blank" rel="noopener noreferrer">
+          <span className="pcard--more__label">{moreProjects.label}</span>
+          <span className="pcard--more__arrow" aria-hidden="true">↗</span>
+          <span className="pcard--more__sub">github.com/ksk-17</span>
+        </a>
       </div>
     </section>
   );
