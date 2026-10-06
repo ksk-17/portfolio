@@ -5,6 +5,7 @@ import Footer from "./components/Footer";
 import Hero from "./components/Hero/Hero";
 import Education from "./components/Education/Education";
 import Experience from "./components/Experience/Experience";
+import Skills from "./components/Skills/Skills";
 import Projects from "./components/Projects/Projects";
 import Contact from "./components/Contact/Contact";
 
@@ -18,6 +19,7 @@ export default function App() {
         <Hero />
         <Education />
         <Experience />
+        <Skills />
         <Projects />
         <Contact />
       </main>

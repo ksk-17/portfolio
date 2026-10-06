@@ -7,10 +7,11 @@ import "./Nav.css";
 const links = [
   { id: "education", label: "Education" },
   { id: "experience", label: "Experience" },
+  { id: "skills", label: "Skills" },
   { id: "projects", label: "Projects" },
   { id: "contact", label: "Contact" },
 ];
-const observed = ["education", "experience", "projects", "contact"];
+const observed = ["education", "experience", "skills", "projects", "contact"];
 
 export default function Nav() {
   const [open, setOpen] = useState(false);

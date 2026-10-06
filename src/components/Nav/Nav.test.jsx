@@ -8,7 +8,7 @@ import { profile } from "../../data/profile";
 describe("Nav", () => {
   it("links to every section", () => {
     render(<ThemeProvider><Nav /></ThemeProvider>);
-    ["Education", "Experience", "Projects", "Contact"].forEach((label) => {
+    ["Education", "Experience", "Skills", "Projects", "Contact"].forEach((label) => {
       expect(screen.getByRole("link", { name: label })).toHaveAttribute("href", `#${label.toLowerCase()}`);
     });
   });
