@@ -15,6 +15,11 @@ describe("Hero", () => {
     const img = screen.getByAltText(new RegExp(profile.name));
     expect(img.getAttribute("src")).toBe(`${import.meta.env.BASE_URL}avatar.webp`);
   });
+  it("lists interests under the intro", () => {
+    render(<Hero />);
+    expect(screen.getByText("I like")).toBeInTheDocument();
+    ["Running", "Treks", "Beaches", "Movies"].forEach((l) => expect(screen.getByText(l)).toBeInTheDocument());
+  });
   it("has no decorative 3D layer", () => {
     const { container } = render(<Hero />);
     expect(container.querySelector("canvas, .backdrop3d")).toBeNull();
