@@ -3,7 +3,7 @@ export const profile = {
   shortName: "Sumanth",
   roles: ["ML Engineer", "ML Researcher", "Software Engineer"],
   lede:
-    "I build generalizable, explainable AI. M.S. in Artificial Intelligence at San José State University (graduating Fall 2026), previously Software Developer at JPMorgan Chase. I'm looking for industry research roles and collaborations in knowledge-graph-grounded LLMs and neuro-symbolic vision reasoning, and I want to work on reasoning models, using reinforcement learning to improve their capabilities.",
+    "I build generalizable, explainable AI. M.S. in Artificial Intelligence at San José State University (graduating Fall 2026), previously AI Software Developer Intern at SAP Labs. I'm looking for industry research roles and collaborations in knowledge-graph-grounded LLMs and neuro-symbolic vision reasoning, and I want to work on reasoning models, using reinforcement learning to improve their capabilities.",
   interests: [
     { id: "running", emoji: "🏃", label: "Running" },
     { id: "treks", emoji: "🥾", label: "Treks" },
