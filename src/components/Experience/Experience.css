@@ -7,7 +7,7 @@
 .stack__head { display: flex; gap: 16px; align-items: center; margin-bottom: 14px; }
 .stack__role { margin: 0; font-size: clamp(1.25rem, 2.6vw, 1.7rem); letter-spacing: -0.02em; }
 .stack__meta { margin: 2px 0 0; color: var(--muted); }
-.stack__list { margin: 0; padding-left: 1.2em; display: grid; gap: 8px; color: var(--text); max-width: 760px; }
+.stack__list { margin: 0; padding-left: 1.2em; display: grid; gap: 8px; color: var(--text); }
 .stack__more { margin-top: 16px; background: none; border: 0; color: var(--accent); font: inherit; font-weight: 500; cursor: pointer; padding: 4px 0; }
 .stack__card[data-placeholder="true"] { box-shadow: none; border: 1px dashed var(--muted); background: var(--bg); }
 .stack__card[data-placeholder="true"] .stack__role, .stack__card[data-placeholder="true"] .stack__list { color: var(--muted); }
